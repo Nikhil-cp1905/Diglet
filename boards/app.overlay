@@ -1,0 +1,25 @@
+/ {
+    chosen {
+        zephyr,console = &uart0;
+    };
+
+    /* DC Motor using PWM */
+    &pwm0 {
+        status = "okay";
+    };
+
+    /* Stepper Motor */
+    &stepper0 {
+        status = "okay";
+        step-gpios = <&gpio0 5 GPIO_ACTIVE_HIGH>;  /* Step pin */
+        dir-gpios  = <&gpio0 6 GPIO_ACTIVE_HIGH>;  /* Direction pin */
+        enable-gpios = <&gpio0 7 GPIO_ACTIVE_HIGH>; /* Enable pin */
+    };
+
+    /* Limit Switch */
+    &gpio0 {
+        status = "okay";
+        limit-switch-gpios = <&gpio0 8 GPIO_ACTIVE_LOW>; /* Limit switch input */
+    };
+};
+
